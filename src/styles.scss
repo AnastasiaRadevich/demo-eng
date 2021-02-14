@@ -1,0 +1,18 @@
+@font-face {
+  font-family: 'Pacifico';
+  src: url('assets/fonts/Pacifico-Regular.ttf') format('ttf');
+}
+html, body {
+  margin: 0;
+  height: 100%;
+}
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;}
+.mat-tab-label-content {
+  font-size: 1.5rem;
+}
+.mat-tab-label{
+  width: calc(100%/3);
+}
+.mat-tab-body-content {
+  overflow-y:hidden !important;
+}

@@ -1,0 +1,33 @@
+<section>
+  <mat-tab-group (selectedTabChange)="executeSelectedChange($event)">
+
+    <mat-tab class="tab-label" label="Flashcards">
+      <mat-grid-list *ngIf="!stateCollection; else words" cols="3" rowHeight="300px">
+        <mat-grid-tile  *ngFor="let c of cards">
+          <app-card (cardsCollection)="updateChoice($event)" [data]="c">
+          </app-card>
+        </mat-grid-tile>
+      </mat-grid-list>
+
+      <ng-template #words>
+        <mat-grid-list cols="3" rowHeight="300px">
+          <mat-grid-tile *ngFor="let w of collection">
+            <app-card [wordData]="w">
+            </app-card>
+          </mat-grid-tile>
+        </mat-grid-list>
+      </ng-template>
+    </mat-tab>
+
+    <mat-tab class="tab-label" label="Dictionary">
+      <p></p>
+      <app-dictionary></app-dictionary>
+    </mat-tab>
+
+    <mat-tab class="tab-label" label="Vocabulary">
+      <p></p>
+    </mat-tab>
+
+  </mat-tab-group>
+</section>
+

@@ -1,0 +1,19 @@
+<mat-toolbar color="primary">
+  <div>
+    <button mat-icon-button (click)="onToggleSidenav()">
+      <mat-icon>menu</mat-icon>
+    </button>
+  </div>
+  <div class="logo">
+    <a routerLink="/home">Easy-Slang</a>
+  </div>
+  <div>
+    <ul class="navigation-items">
+      <li class="navigation-items__item">
+        <a [ngStyle]="{background: backgroundToggle ? '#e42c64' : null}"
+           (mouseover)="backgroundToggle = true"
+           (mouseleave)="backgroundToggle = false" routerLink="#">Stats</a>
+      </li>
+    </ul>
+  </div>
+</mat-toolbar>

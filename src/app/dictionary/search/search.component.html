@@ -1,0 +1,8 @@
+<mat-form-field class="form-field" appearance="outline">
+    <input matInput type="text"
+           [formControl]="formSearch"
+           placeholder="example">
+    <br>
+    <button mat-raised-button color="primary" type="button"
+            (click)="sendRequest()">Search</button>
+</mat-form-field>

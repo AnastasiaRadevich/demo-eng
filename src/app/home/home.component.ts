@@ -7,8 +7,8 @@ import {CardData, CardWord} from '../card/card.component';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent {
-  public stateCollection: boolean;
-  public collection: CardWord[];
+  public stateCollection: boolean = true;
+  public selectedCategory: CardData;
   public cards: CardData[] = [
   {
    title: 'Business concepts',
@@ -100,13 +100,13 @@ export class HomeComponent {
    id: 5,
    },
   ];
-  public executeSelectedChange = (event: object) => {
-  console.log(event);
+  
+  executeSelectedChange = (event: object) => {
+    console.log(event);
   }
-  public updateChoice(collection: CardData): void {
-  this.collection = collection.words;
-    console.log(this.collection)
-  this.stateCollection = !(collection.isCollection);
-    console.log(this.stateCollection)
+  
+  updateChoice(category: CardData): void {
+    this.selectedCategory = category;
+    this.stateCollection = !category.isCollection;
   }
 }

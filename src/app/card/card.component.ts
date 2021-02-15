@@ -15,44 +15,44 @@ export interface CardWord {
   image: string;
   state: 'default' | 'flipped' | 'matched';
 }
+
 @Component({
   selector: 'app-card',
   templateUrl: './card.component.html',
   styleUrls: ['./card.component.scss'],
   animations: [
-  trigger('cardFlip', [
-  state('default', style({
-  transform: 'none'
-  })),
-  state('flipped', style({
-  transform: 'rotateY(180deg)'
-  })),
-  transition('default => flipped', [
-  animate('400ms')
-  ]),
-  transition('flipped => default', [
-  animate('200ms')
-  ])
+    trigger('cardFlip', [
+    state('default', style({
+      transform: 'none'
+    })),
+    state('flipped', style({
+      transform: 'rotateY(180deg)'
+    })),
+    transition('default => flipped', [
+      animate('400ms')
+    ]),
+      transition('flipped => default', [
+      animate('200ms')
+    ])
   ])
 ]
 })
 
 export class CardComponent {
-   @Input() public data: CardData;
-   @Input() public wordData: CardWord;
-   @Output() public cardsCollection: EventEmitter<CardData> = new EventEmitter<CardData>();
+
+  @Input() state: boolean;
+  @Input() title: string;
+  @Input() translate?: string;
+  @Input() image: string;
+  @Input() isCollection: boolean = false;
 
   public cardClicked = () => {
-  if (this.data.state === 'default' && this.data.isCollection === true) {
-  this.cardsCollection.emit(this.data);
-  return this.data.isCollection = false;
-
-  if (this.data.state === 'default') {
-  this.data.state = 'flipped';
-  } else {
-  this.data.state = 'default';
-  }
-  }
+    // if (this.data.state === 'default' && this.data.isCollection) {
+    //   this.cardsCollection.emit(this.data);
+    //   this.data.isCollection = false;
+    //   return this.data.isCollection;
+    // }
+    // this.data.state = this.data.state === 'default' ? 'flipped' : 'default';
   }
 
 }

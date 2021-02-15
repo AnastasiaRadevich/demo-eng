@@ -2,18 +2,24 @@
   <mat-tab-group (selectedTabChange)="executeSelectedChange($event)">
 
     <mat-tab class="tab-label" label="Flashcards">
-      <mat-grid-list *ngIf="!stateCollection; else words" cols="3" rowHeight="300px">
-        <mat-grid-tile  *ngFor="let c of cards">
-          <app-card (cardsCollection)="updateChoice($event)" [data]="c">
-          </app-card>
+      <mat-grid-list *ngIf="stateCollection; else words" cols="3" rowHeight="300px">
+        <mat-grid-tile  *ngFor="let card of cards">
+          <app-card (click)="updateChoice(card)"
+                    [state]="card.state"
+                    [title]="card.title"
+                    [image]="'assets/images/' + card.title + '/' + card.image"
+                    [isCollection]="true"></app-card>
         </mat-grid-tile>
       </mat-grid-list>
 
       <ng-template #words>
         <mat-grid-list cols="3" rowHeight="300px">
-          <mat-grid-tile *ngFor="let w of collection">
-            <app-card [wordData]="w">
-            </app-card>
+          <mat-grid-tile *ngFor="let word of selectedCategory?.words">
+            <app-card [state]="word.state"
+                      [title]="word.title"
+                      [translate]="word.translate"
+                      [image]="'assets/images/' + selectedCategory.title + '/' + word.image"
+            ></app-card>
           </mat-grid-tile>
         </mat-grid-list>
       </ng-template>

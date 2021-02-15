@@ -1,29 +1,29 @@
-<mat-card class="card" (click)="cardClicked()" [@cardFlip]="data.state">
+<mat-card class="card" (click)="cardClicked()" [@cardFlip]="state">
   <div class="face back">
-    <ng-container *ngTemplateOutlet="data.isCollection ? collection : word"></ng-container>
+    <ng-container *ngTemplateOutlet="isCollection ? collection : word"></ng-container>
   </div>
   <div class="face front">
-      <ng-container *ngTemplateOutlet="data.isCollection ? collection : translate"></ng-container>
+    <ng-container *ngTemplateOutlet="isCollection ? collection : translate"></ng-container>
   </div>
 </mat-card>
 
 <ng-template #translate>
   <mat-card-content>
-    <img mat-card-image [src]="'./assets/images/' + data.title + '/' + wordData.image">
-    <h2>{{wordData.translate}}</h2>
+    <img mat-card-image [src]="image">
+    <h2>{{ translate }}</h2>
   </mat-card-content>
 </ng-template>
 
 <ng-template #word>
   <mat-card-content>
-    <img mat-card-image [src]="'./assets/images/' + data.title + '/' + wordData.image">
-    <h2>{{wordData.title}}</h2>
+    <img mat-card-image [src]="image">
+    <h2>{{ title }}</h2>
   </mat-card-content>
 </ng-template>
 
 <ng-template #collection>
-  <img mat-card-image [src]="'./assets/images/' + data.title + '/' + data.image">
+  <img mat-card-image [src]="image">
   <mat-card-content>
-    <h2>{{data.title}}</h2>
+    <h2>{{ title }}</h2>
   </mat-card-content>
 </ng-template>
